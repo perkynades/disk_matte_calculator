@@ -1,0 +1,23 @@
+{
+  "name": "disk-matte-calculator",
+  "version": "0.0.1",
+  "description": "A discrete mathmatics calculator used in course",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perkynades/disk_matte_calculator.git"
+  },
+  "author": "elton, holanger, hurlen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perkynades/disk_matte_calculator/issues"
+  },
+  "homepage": "https://github.com/perkynades/disk_matte_calculator#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.3.0"
+  }
+}
