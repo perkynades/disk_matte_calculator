@@ -1,5 +1,5 @@
 // Importing files
-import SetOperations from './SetOperations';
+import SetOperations from './SetOperations.js';
 
 const myForm = document.querySelector("#my-form");
 const input_u = document.querySelector("#input_u");
@@ -10,23 +10,32 @@ const answerList = document.querySelector("#answers");
 
 const compress_u = document.querySelector("#compress_u");
 
-compress_u.addEventListener(`click`, (e) => {
-    e.preventDefault();
-    if (input_u.value === "") {
-        msg.classList.add("error");
-        msg.innerHTML = "Please enter the U-field";
+// compress_u.addEventListener(`click`, (e) => {
+//     e.preventDefault();
+//     if (input_u.value === "") {
+//         msg.classList.add("error");
+//         msg.innerHTML = "Please enter the U-field";
 
-        setTimeout(() => msg.remove(), 4000);
-    } else {
-        const li = document.createElement("li");
-        li.appendChild(
-            document.createTextNode(`U =  ${input_u.value}`)
-        );
+//         setTimeout(() => msg.remove(), 4000);
+//     } else {
+//         const li = document.createElement("li");
+//         li.appendChild(
+//             document.createTextNode(`U =  ${input_u.value}`)
+//         );
 
-        answerList.appendChild(li);
-    }
-});
+//         answerList.appendChild(li);
+//     }
+// });
 
 // Set event litener for A union B
 // When clicked start SetOperations.union(A,B)
 // Display output on page
+
+// testing
+const setA = new Set([1, 2, 3, 4, 5]);
+const setB = new Set([2, 3, 5]);
+console.log(setA);
+
+
+const testString = SetOperations.makeBitString(setA, setB);
+console.log(testString);
