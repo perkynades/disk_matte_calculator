@@ -16,7 +16,9 @@
     "url": "https://github.com/perkynades/disk_matte_calculator/issues"
   },
   "homepage": "https://github.com/perkynades/disk_matte_calculator#readme",
-  "dependencies": {},
+  "dependencies": {
+    "bulma": "^0.7.5"
+  },
   "devDependencies": {
     "eslint": "^6.3.0"
   }
