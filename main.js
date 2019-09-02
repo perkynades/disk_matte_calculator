@@ -1,3 +1,6 @@
+// Importing files
+import SetOperations from './SetOperations';
+
 const myForm = document.querySelector("#my-form");
 const input_u = document.querySelector("#input_u");
 const input_a = document.querySelector("#input_a");
@@ -24,3 +27,6 @@ compress_u.addEventListener(`click`, (e) => {
     }
 });
 
+// Set event litener for A union B
+// When clicked start SetOperations.union(A,B)
+// Display output on page
