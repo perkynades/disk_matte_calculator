@@ -1,14 +1,13 @@
 // Importing files
 import SetOperations from './SetOperations.js';
+import InputParser from './InputParser.js';
 
-const myForm = document.querySelector("#my-form");
-const input_u = document.querySelector("#input_u");
-const input_a = document.querySelector("#input_a");
-const input_b = document.querySelector("#input_b");
-const msg = document.querySelector(".msg");
-const answerList = document.querySelector("#answers");
-
-const compress_u = document.querySelector("#compress_u");
+const myForm = document.querySelector('#my-form');
+const input_u = document.querySelector('#input_u');
+const input_a = document.querySelector('#input_a');
+const input_b = document.querySelector('#input_b');
+const msg = document.querySelector('.msg');
+const answerList = document.querySelector('#answers');
 
 // compress_u.addEventListener(`click`, (e) => {
 //     e.preventDefault();
@@ -36,7 +35,6 @@ const setUniversal = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 const setA = new Set([2, 3, 6, 7, 10]);
 const setB = new Set([2, 3, 5]);
 const setPar = new Set([2, 4, 6, 8, 10]);
-
 
 
 console.log(setUniversal);
