@@ -170,7 +170,13 @@ class SetOperations {
      * @return {Integer}
      */
     static cardinality(set) {
-        return this.makeArrayFromSet(set).length;
+        const length = 0;
+        if (this.makeArrayFromSet(set).length = 0) {
+            length = 0;
+        } else {
+            length = this.makeArrayFromSet(set).length;
+        }
+        return length;
     }
 
     /**
