@@ -1,6 +1,7 @@
 /**
  * Does opreations on sets. Uses Bit strings for most operations.
  * Also parses to and from array and bitstring
+ * @author Steffen Holanger
  */
 class SetOperations {
     /**
