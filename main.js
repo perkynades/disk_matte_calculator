@@ -109,6 +109,8 @@ cardinality.addEventListener(`click`, (e) => {
     if (inputU.value === "") {
         msg.classList.add("error");
         msg.innerHTML = "Please fill in the U - field";
+
+        setTimeout(() => msg.remove(), 4000);
     }
     try {
         const uSetInput = InputParser.parseToSet(inputU.value);
@@ -119,5 +121,29 @@ cardinality.addEventListener(`click`, (e) => {
         answerList.appendChild(li);
     } catch (err) {
         console.log(err);
+    }
+});
+
+isAnElementInSet.addEventListener(`click`, (e) => {
+    e.preventDefault();
+
+    const uSetInput = InputParser.parseToSet(inputU.value);
+    const aElementInput = InputParser.parseToString(inputA.value);
+
+    const isAelementAnswer = SetOperations.isAnElementInSet(uSetInput, aElementInput);
+
+    if (inputU.value === "" || inputA.value === "") {
+        msg.classList.add("error");
+        msg.innerHTML = "Please write your set in the U - field, and the what element you want to search for in the A - field";
+
+        setTimeout(() => msg.remove(), 4000);
+    } else if (isAelementAnswer === false) {
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(`x ∉ A`));
+        answerList.appendChild(li);
+    } else {
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(`x ∈ A = ${isAelementAnswer}`));
+        answerList.appendChild(li);
     }
 });
