@@ -85,9 +85,36 @@ class InputParser {
         } catch (err) {
             throw err;
         }
-        console.log(arr);
 
         return arr;
+    }
+
+
+    /**
+     * Parse input to set
+     * @param {*} string 
+     */
+    static parseToSet(string) {
+        try {
+            let arr = this.parseToArray(string);
+            return new Set(arr);
+        } catch (err) {
+            throw err;
+        }
+        return new Set();
+    }
+
+    /**
+     * 
+     * @param {Set} set Set to convert to a string
+     * @return {String} A comma seperated string with the values of the set.
+     */
+    static parseFromSetToString(set) {
+        let outputString = '';
+        set.forEach(element => {
+            outputString += (element + ', ');
+        });
+        return outputString;
     }
 }
 
