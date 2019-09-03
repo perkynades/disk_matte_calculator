@@ -80,7 +80,7 @@ class SetOperations {
      * @param {set} setUnivarsal
      * @param {set} setA
      * @param {set} setB
-     * @return {String}
+     * @return {String} Bitstring of elements
      */
     static intersection(setUnivarsal, setA, setB) {
         const outputIntersectionArray = [];
@@ -190,7 +190,8 @@ class SetOperations {
      * @return {Array}
      */
     static makeBitArrayFromSet(setUnivarsal, setA) {
-        return this.makeArrayFromBitString(this.makeBitStringFromSet(setUnivarsal, setA));
+        return this.makeArrayFromBitString(
+            this.makeBitStringFromSet(setUnivarsal, setA));
     }
 
     /**
@@ -229,6 +230,48 @@ class SetOperations {
         }
 
         return output;
+    }
+
+    /**
+     * Checks if two sets, set A and B, are disjunct
+     * @param {Set} setUnivarsal universal set
+     * @param {Set} setA set A
+     * @param {Set} setB set B
+     * @return {boolean} true if they are disjunct and false if not
+     */
+    static disjunct(setUnivarsal, setA, setB) {
+        const intersectionBitString =
+            this.intersection(setUnivarsal, setA, setB);
+
+        const intersectionArray =
+            this.makeArrayFromBitString(intersectionBitString);
+        const setOfBitStringValues = new Set(intersectionArray);
+
+        // the intersection-bitstring-set should
+        // not hold any values of 1 to be disjunct
+        return !setOfBitStringValues.has('1');
+    }
+
+    /**
+     * Converts a bitstring to a set
+     * @param {Set} setUnivarsal the universal set
+     * @param {bitstring} bitstring a bitstring to be converted
+     * @return {Set} A set holding the values based on the bitstring
+     */
+    static makeSetFromBitstring(setUnivarsal, bitstring) {
+        const arrayOfBitstring = this.makeArrayFromBitString(bitstring);
+        const arrayOfValuesInUniversal = this.makeArrayFromSet(setUnivarsal);
+
+        const outputSet = new Set();
+
+        arrayOfBitstring.forEach((element, index) => {
+            if (element == 1) {
+                const value = arrayOfValuesInUniversal[index];
+                outputSet.add(value);
+            }
+        });
+
+        return outputSet;
     }
 }
 
