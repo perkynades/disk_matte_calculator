@@ -90,7 +90,7 @@ complement.addEventListener(`click`, (e) => {
     } else {
         try {
             const aSetInput = InputParser.parseToSet(inputA.value);
-            const uSetInput = InputParser.parseToSet(inputU);
+            const uSetInput = InputParser.parseToSet(inputU.value);
 
             const complementAnswer = SetOperations.complement(uSetInput, aSetInput);
             const outputSet = SetOperations.makeArrayFromBitString(complementAnswer);
@@ -101,5 +101,23 @@ complement.addEventListener(`click`, (e) => {
         } catch (err) {
             console.log(err);
         }
+    }
+});
+
+cardinality.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    if (inputU.value === "") {
+        msg.classList.add("error");
+        msg.innerHTML = "Please fill in the U - field";
+    }
+    try {
+        const uSetInput = InputParser.parseToSet(inputU.value);
+        const cardinalityAnswer = SetOperations.cardinality(uSetInput);
+
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(`|U| = ${cardinalityAnswer}`));
+        answerList.appendChild(li);
+    } catch (err) {
+        console.log(err);
     }
 });
