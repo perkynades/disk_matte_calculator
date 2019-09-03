@@ -27,7 +27,7 @@ compress_u.addEventListener(`click`, (e) => {
             answerList.appendChild(li);
         } catch (err) {
             console.log(err);
-        }     
+        }   
     }
 });
 
@@ -71,8 +71,32 @@ a_union_b.addEventListener(`click`, (e) => {
             const unionAnswer = SetOperations.union(aSetInput, bSetInput);
             const outputSet = SetOperations.makeArrayFromBitString(unionAnswer);
             const output = InputParser. parseFromSetToString(outputSet);
-            const lit = document.createElement("li");
+            const li = document.createElement("li");
             li.appendChild(document.createTextNode(`A ∪ B = ${output}`));
+            answerList.appendChild(li);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+});
+
+complement.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    if (inputA.value === "" || inputB.value === "") {
+        msg.classList.add("error");
+        msg.innerHTML = "Please fill in the A and U field's";
+
+        setTimeout(() => msg.remove(), 4000);
+    } else {
+        try {
+            const aSetInput = InputParser.parseToSet(inputA.value);
+            const uSetInput = InputParser.parseToSet(inputU);
+
+            const complementAnswer = SetOperations.complement(uSetInput, aSetInput);
+            const outputSet = SetOperations.makeArrayFromBitString(complementAnswer);
+            const output = InputParser.parseFromSetToString(outputSet);
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(`Answer = ${output}`));
             answerList.appendChild(li);
         } catch (err) {
             console.log(err);
