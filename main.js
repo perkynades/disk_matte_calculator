@@ -32,10 +32,25 @@ const compress_u = document.querySelector("#compress_u");
 // Display output on page
 
 // testing
-const setA = new Set([1, 2, 3, 4, 5]);
+const setUniversal = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+const setA = new Set([2, 3, 6, 7, 10]);
 const setB = new Set([2, 3, 5]);
-console.log(setA);
+const setPar = new Set([2, 4, 6, 8, 10]);
 
 
-const testString = SetOperations.makeBitString(setA, setB);
-console.log(testString);
+
+console.log(setUniversal);
+console.log(setPar);
+
+
+
+// const testString = SetOperations.makeBitString(setA, setB);
+const testString2 = SetOperations.makeBitString(setUniversal, setPar);
+// console.log(testString);
+console.log('Test string 2 ' + testString2);
+const setUnionAB = SetOperations.union(setPar, setB);
+console.log(setUnionAB);
+console.log('Make array from bitstring teststring2 ' + SetOperations.makeArrayFromBitString(testString2));
+
+
+console.log('Intersection A and B ' + SetOperations.intersection(setUniversal, setA, setB));
