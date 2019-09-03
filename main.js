@@ -25,22 +25,4 @@ compress_u.addEventListener('click', (e) => {
         answerList.appendChild(li);
     }
 });
-try {
-    const test = '2,3,3,3,,,,,,4,5,6';
-    console.log('Before Parsing: ' + test);
-    console.log('After parsing: ' + InputParser.parseToString(test));
-    console.log('test 2');
-
-    const test2 = '8,,,,,,       ';
-    console.log('Before Parsing: ' + test2);
-    console.log('After parsing: ' + InputParser.parseToString(test2));
-
-    console.log('test 3');
-
-    const test3 = '1,';
-    console.log('Before Parsing: ' + test3);
-    console.log('After parsing: ' + InputParser.parseToArray(test3));
-} catch (err) {
-    console.log(err.message);
-}
 

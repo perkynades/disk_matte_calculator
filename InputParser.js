@@ -32,13 +32,13 @@ class InputParser {
      * @return {*} newString without extra commas
      */
     static removeExtraComma(string) {
-        const regex = /([,])\,+/gm;
-        const newString = string.replace(regex, ',');
-        console.log(newString.charAt(newString.length - 1));
-        if (newString == null || newString == '' || newString == ',') {
+        const regex = /([,])\,+/g;
+        const regexStartAndEnd = /(([,])\,*$)|(^([,])\,*)/g;
+        const str = string.replace(regex, ',').replace(regexStartAndEnd, '');
+        if (str == null || str == '' || str == ',') {
             throw new Error('String has to contain at least one element');
         }
-        return newString;
+        return str;
     }
 
     /**
@@ -85,6 +85,8 @@ class InputParser {
         } catch (err) {
             throw err;
         }
+        console.log(arr);
+
         return arr;
     }
 }
