@@ -55,3 +55,27 @@ a_intersection_b.addEventListener(`click`, (e) => {
         }
     }
 });
+
+a_union_b.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    if (inputA.value === "" || inputB.value === "") {
+        msg.classList.add("error");
+        msg.innerHTML = "Please fill in the A and B field";
+
+        setTimeout(() => msg.remove(), 4000);
+    } else {
+        try {
+            const aSetInput = InputParser.parseToSet(inputA.value);
+            const bSetInput = InputParser.parseToSet(inputB.value);
+
+            const unionAnswer = SetOperations.union(aSetInput, bSetInput);
+            const outputSet = SetOperations.makeArrayFromBitString(unionAnswer);
+            const output = InputParser. parseFromSetToString(outputSet);
+            const lit = document.createElement("li");
+            li.appendChild(document.createTextNode(`A ∪ B = ${output}`));
+            answerList.appendChild(li);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+});
