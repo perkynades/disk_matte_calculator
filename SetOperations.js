@@ -15,7 +15,7 @@ class SetOperations {
      * @param {*} setA The set to be compared
      * @return {string} outstrings
      */
-    static makeBitString(setUnivarsal, setA) {
+    static makeBitStringFromSet(setUnivarsal, setA) {
         // initializing the output string
         let outputString = '';
 
@@ -84,15 +84,14 @@ class SetOperations {
      */
     static intersection(setUnivarsal, setA, setB) {
         const outputIntersectionArray = [];
-        const setABitString = this.makeBitString(setUnivarsal, setA);
-        const setBBitString = this.makeBitString(setUnivarsal, setB);
+        const setABitString = this.makeBitStringFromSet(setUnivarsal, setA);
+        const setBBitString = this.makeBitStringFromSet(setUnivarsal, setB);
 
         const setABitArray = this.makeArrayFromBitString(setABitString);
         const setBBitArray = this.makeArrayFromBitString(setBBitString);
 
         // Looping through the array
         for (let i = 0; i < setABitArray.length; i++) {
-            console.log(`${setABitArray[i]} ${setBBitArray[i]}`);
             // Checking that both arrays at index i holds an 1.
             if (setABitArray[i] == 1 && setBBitArray[i] == 1) {
                 // writing result to output array
@@ -139,6 +138,97 @@ class SetOperations {
             ouputString += element;
         });
         return ouputString;
+    }
+
+    /**
+     * Complements a se
+     * @param {Set} setUniversal The universal set
+     * @param {Set} setA The set to be complemented
+     * @return {String} A bit string holding the values
+     */
+    static complement(setUniversal, setA) {
+        const bitString = this.makeBitStringFromSet(setUniversal, setA);
+        const array = this.makeArrayFromBitString(bitString);
+        const outputArray = [];
+
+
+        array.forEach((element) => {
+            if (element == 0) {
+                element = 1;
+            } else {
+                element = 0;
+            }
+            outputArray.push(element);
+        });
+        const bitStringOutput = this.makeBitStingFromArray(outputArray);
+        return bitStringOutput;
+    }
+
+    /**
+     * Returns the cardinality of a set
+     * @param {Set} set The set to get the cardinality from
+     * @return {Integer}
+     */
+    static cardinality(set) {
+        return this.makeArrayFromSet(set).length;
+    }
+
+    /**
+     * Checks if a set contains an element
+     * @param {Set} set The set
+     * @param {*} element The element to check
+     * @return {boolean} true if the set contains element, false if not
+     */
+    static isAnElementInSet(set, element) {
+        return set.has(element);
+    }
+
+    /**
+     * Makes a bit array from a set
+     * @param {Set} setUnivarsal
+     * @param {Set} setA
+     * @return {Array}
+     */
+    static makeBitArrayFromSet(setUnivarsal, setA) {
+        return this.makeArrayFromBitString(this.makeBitStringFromSet(setUnivarsal, setA));
+    }
+
+    /**
+     *
+     * @param {Set} setUniversal
+     * @param {Set} superset The possible superset
+     * @param {Set} subset The possible subset
+     * @return {boolean}
+     */
+    static isSubset(setUniversal, superset, subset) {
+        let output = false;
+        const arrayOfSetA = this.makeBitArrayFromSet(setUniversal, superset);
+        const arrayOfSetB = this.makeBitArrayFromSet(setUniversal, subset);
+
+        const trueOrFalseSet = new Set();
+
+        if (arrayOfSetB.length > arrayOfSetA) {
+            output = false;
+        }
+
+        arrayOfSetA.forEach((element, index) => {
+            if (element == 0 && arrayOfSetB[index] == 1) {
+                trueOrFalseSet.add('false');
+            }
+            if (element == 1 && arrayOfSetB[index] == 1) {
+                trueOrFalseSet.add('true');
+            }
+        });
+
+        if (trueOrFalseSet.has('true')) {
+            output = true;
+        }
+
+        if (trueOrFalseSet.has('false')) {
+            output = false;
+        }
+
+        return output;
     }
 }
 
