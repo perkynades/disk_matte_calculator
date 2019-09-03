@@ -202,20 +202,20 @@ class SetOperations {
      */
     static isSubset(setUniversal, superset, subset) {
         let output = false;
-        const arrayOfSetA = this.makeBitArrayFromSet(setUniversal, superset);
-        const arrayOfSetB = this.makeBitArrayFromSet(setUniversal, subset);
+        const supersetArray = this.makeBitArrayFromSet(setUniversal, superset);
+        const subsetArray = this.makeBitArrayFromSet(setUniversal, subset);
 
         const trueOrFalseSet = new Set();
 
-        if (arrayOfSetB.length > arrayOfSetA) {
+        if (subsetArray.length > supersetArray) {
             output = false;
         }
 
-        arrayOfSetA.forEach((element, index) => {
-            if (element == 0 && arrayOfSetB[index] == 1) {
+        supersetArray.forEach((element, index) => {
+            if (element == 0 && subsetArray[index] == 1) {
                 trueOrFalseSet.add('false');
             }
-            if (element == 1 && arrayOfSetB[index] == 1) {
+            if (element == 1 && subsetArray[index] == 1) {
                 trueOrFalseSet.add('true');
             }
         });
