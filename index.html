@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Oblig 2 disk matte</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1 class="title is-1">Oblig 2 - Diskre matte</h1>
-        </header>
-        <section>
-            <form id="my-form">
-                <h1>Set calculator</h1>
-                <div class="msg"></div>
-                <div>
-                    <label for="input_u">U:</label>
-                    <input type="text" id="input_u">
-                </div>
-                <div>
-                    <label for="input_a">A:</label>
-                    <input type="text" id="input_a" />
-                </div>
-                <div>
-                    <label for="input_b">B:</label>
-                    <input type="text" id="input_b" />
-                </div>
-                <button class="button is-link" id="compress_u">Compress U</button>
-                <button class="button is-link" id="a_intersection_b">A ∩ B</button>
-                <button class="button is-link" id="a_union_b">A ∪ B	</button>
-                <button class="button is-link" id="complement"><p>A<sup>U</sup></p></button>
-                <button class="button is-link" id="cardinality">|A|</button>
-                <button class="button is-link" id="isAnElementInSet">x∈A</button>
-                <button class="button is-link" id="isSubset">A ⊆ B</button>
-                <button class="button is-link" id="disjunct">A ∨ B</button>
-            </form>
-                
-            <ul id="answers"></ul>
-                
-            <ul class="items">
-                <li class="item">Item 1</li>
-            </ul>
-        </section>
-        <script type="module" src="main.js"></script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Oblig 2 disk matte</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="title is-1">Oblig 2 - Diskre matte</h1>
+    </header>
+    <section>
+        <form id="my-form">
+            <h1>Set calculator</h1>
+            <div class="msg"></div>
+            <div>
+                <label for="input_u">U:</label>
+                <input type="text" id="input_u" value="1,2,3,4,5,6,7,8,9,10">
+            </div>
+            <div>
+                <label for="input_a">A:</label>
+                <input type="text" id="input_a" value="1,3,5,7" />
+            </div>
+            <div>
+                <label for="input_b">B:</label>
+                <input type="text" id="input_b" value="1,3,5,7,9" />
+            </div>
+            <button class="button is-link" id="compress_u">Compress U</button>
+            <button class="button is-link" id="a_intersection_b">A ∩ B</button>
+            <button class="button is-link" id="a_union_b">A ∪ B </button>
+            <button class="button is-link" id="complement">
+                <p>A<sup>U</sup></p>
+            </button>
+            <button class="button is-link" id="cardinality">|A|</button>
+            <button class="button is-link" id="isAnElementInSet">A ∈ B</button>
+            <button class="button is-link" id="isSubset">A ⊆ B</button>
+            <button class="button is-link" id="disjunct">A ∨ B</button>
+        </form>
+
+        <ul id="answers"></ul>
+
+        <ul class="items">
+            <li class="item">Item 1</li>
+        </ul>
+    </section>
+    <script type="module" src="main.js"></script>
+
 </html>

@@ -262,6 +262,7 @@ class SetOperations {
         const arrayOfBitstring = this.makeArrayFromBitString(bitstring);
         const arrayOfValuesInUniversal = this.makeArrayFromSet(setUnivarsal);
 
+
         const outputSet = new Set();
 
         arrayOfBitstring.forEach((element, index) => {
