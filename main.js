@@ -126,24 +126,67 @@ cardinality.addEventListener(`click`, (e) => {
 
 isAnElementInSet.addEventListener(`click`, (e) => {
     e.preventDefault();
+    try {
+        const uSetInput = InputParser.parseToSet(inputU.value);
+        const aElementInput = InputParser.parseToString(inputA.value);
+        const isAelementAnswer = SetOperations.isAnElementInSet(uSetInput, aElementInput);
 
-    const uSetInput = InputParser.parseToSet(inputU.value);
-    const aElementInput = InputParser.parseToString(inputA.value);
+        if (inputU.value === "" || inputA.value === "") {
+            msg.classList.add("error");
+            msg.innerHTML = "Please write your set in the U - field, and the what element you want to search for in the A - field";
 
-    const isAelementAnswer = SetOperations.isAnElementInSet(uSetInput, aElementInput);
+            setTimeout(() => msg.remove(), 4000);
+        } else if (isAelementAnswer === false) {
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(`x ∉ A`));
+            answerList.appendChild(li);
+        } else {
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(`x ∈ A = ${isAelementAnswer}`));
+            answerList.appendChild(li);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
 
-    if (inputU.value === "" || inputA.value === "") {
+isSubset.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    if (inputU.value === "" || inputA.value === "" || inputB.value === "") {
         msg.classList.add("error");
-        msg.innerHTML = "Please write your set in the U - field, and the what element you want to search for in the A - field";
-
-        setTimeout(() => msg.remove(), 4000);
-    } else if (isAelementAnswer === false) {
-        const li = document.createElement("li");
-        li.appendChild(document.createTextNode(`x ∉ A`));
-        answerList.appendChild(li);
+        msg.innerHTML = "Please fill in the universal set in the U - field, the super set in the A - field, and the sub set in the B - field";
     } else {
-        const li = document.createElement("li");
-        li.appendChild(document.createTextNode(`x ∈ A = ${isAelementAnswer}`));
-        answerList.appendChild(li);
+        try {
+            const uSetInput = InputParser.parseToSet(inputU.value);
+            const superSetInput = InputParser.parseToSet(inputA.value);
+            const subSetInput = InputParser.parseToSet(inputB.value);
+
+            const isAsubSetAnswer = SetOperations.isAnElementInSet(uSetInput, superSetInput, subSetInput);
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(`A ⊆ B = ${isAsubSetAnswer}`));
+            answerList.appendChild(li);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+});
+
+disjunct.addEventListener(`click`, (e) => {
+    e.preventDefault() 
+    if (inputU.value === "" || inputA.value === "" || inputB.value === "") {
+        msg.classList.add("error");
+        msg.innerHTML = "Please fill in all the fields";
+    } else {
+        try {
+            const uSetInput = InputParser.parseToSet(inputU.value);
+            const aSetInput = InputParser.parseToSet(inputA.value);
+            const bSetInput = InputParser.parseToSet(inputB.value);
+
+            const disjunctAnswer = SetOperations.disjunct(uSetInput, aSetInput, bSetInput);
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(`A ∨ B = ${disjunctAnswer}`));
+        } catch (err) {
+            console.log(err);
+        }
     }
 });
